@@ -24,16 +24,16 @@ import time
          
 app = FastAPI()
 
-while True:
-    try:
-        conn = (psycopg.connect("host=localhost  dbname=fastapi user=postgres password=haris", row_factory=dict_row ))
-        cursor = conn.cursor()
-        print ("connection succeededddd")
-        break
-    except Exception as error:
-        print ("failed to connect db")
-        print (error)
-        time.sleep(2)
+# while True:
+#     try:
+#         conn = (psycopg.connect("host=localhost  dbname=fastapi user=postgres password=haris", row_factory=dict_row ))
+#         cursor = conn.cursor()
+#         print ("connection succeededddd")
+#         break
+#     except Exception as error:
+#         print ("failed to connect db")
+#         print (error)
+#         time.sleep(2)
 
 
 app.include_router(posts.router)
