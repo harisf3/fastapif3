@@ -25,7 +25,7 @@ def create_user(user:schemas.UserRequest, db:Session = Depends(get_db)):
     
     except Exception as error:
         print(error)
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Unable to create User! Something went wrong")
 
 @router.get("/{id}", response_model=schemas.UserResponse)
 def get_post(id:int, response:Response, db:Session = Depends(get_db)):
