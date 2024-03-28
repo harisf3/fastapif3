@@ -58,16 +58,17 @@ def create_post(new_post:schemas.PostCreate, db:Session = Depends(get_db), user 
     return new_post
 
 @router.get("/{id}", response_model=schemas.PostVoteResponse)
-def get_post(id:int, response:Response, db:Session = Depends(get_db)):
+def get_post(id:int, response:Response, db:Session = Depends(get_db), user = Depends(oauth2.get_current_user)):
     # post = find_posts(id)
     # cursor.execute("""SELECT * FROM "Posts" where id = %s """, (str(id),))
     # new_post = cursor.fetchone()
 
     # new_post = db.query(models.Post).filter(models.Post.id == id).first()
-    new_post = db.query(models.Post, func.count(models.Vote.post_id).label("votes")).join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True).group_by(models.Post.id).first()
+    new_post = db.query(models.Post, func.count(models.Vote.post_id).label("votes")).join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True).group_by(models.Post.id).where(models.Post.id == id).first()
     
 
     if not new_post:
+        print("didn't get any post")
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id {id} does not exist")
         # response.status_code = status.HTTP_404_NOT_FOUND
     return new_post
