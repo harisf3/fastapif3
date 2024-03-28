@@ -8,7 +8,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      -name: pulling get repo
-       uses: actions/checkout@v2
-      -name: say hi to haris
-       run: echo "hey haris"
+      - name: pulling get repo
+        uses: actions/checkout@v2
+      - name: say hi to haris
+        run: echo "hey haris"
