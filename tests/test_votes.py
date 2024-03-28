@@ -26,4 +26,6 @@ def test_vote_on_post_unauthroized(client, test_posts, session):
     response = client.post("/votes/" , json=data)
     assert response.status_code == 401
 
+    # nothing
+
     
