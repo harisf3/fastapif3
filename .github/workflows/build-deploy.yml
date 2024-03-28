@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: pulling get repo
-        uses: actions/checkout@v2
-      - name: say hi to haris
-        run: echo "hey haris"
+        uses: actions/checkout@v4
+      - name: install python
+        uses: actions/etup-python@v2
+        with:
+          python-version: "3.9"
+ 
