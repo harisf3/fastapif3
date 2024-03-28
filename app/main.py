@@ -47,7 +47,7 @@ print(settings.database_username)
 
 @app.get("/")
 def root():
-    return {"message": "Fast API by Haris"}
+    return {"message": "Fast API by Haris - deployed via Github actions"}
 
 # @app.get("/ ")
 # def test_posts(db:Session = Depends(get_db)):
