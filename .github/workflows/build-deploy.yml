@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -name: pulling get repo
-        uses: actions/checkout@v2
+       uses: actions/checkout@v2
       -name: say hi to haris
-        run: echo "hey haris"
+       run: echo "hey haris"
